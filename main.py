@@ -3,9 +3,13 @@ import numpy as np
 import functions as fc
 
 N = 1000
-df2 = pd.DataFrame({'A': range(1, N + 1, 1)})
-df2['B'] = df2['A']*2
-# print(df2)
+df = pd.DataFrame({'feature_1': range(1, N + 1, 1),
+                    'feature_2': range(1, N + 1, 1)
+                    })
+df['labels'] = df['feature_1']*2
+print(df)
 
-ndarray1 = fc.make_ndarray_from_dataframe(df2, ['A', 'B'])
-# print(ndarray1)
+df.to_csv(f'./source/df.csv', header=False)
+
+ndarray1 = fc.make_ndarray_from_dataframe(df, ['feature_1', 'feature_2', 'labels'])
+print(ndarray1)
